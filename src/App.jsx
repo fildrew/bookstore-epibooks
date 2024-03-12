@@ -13,9 +13,10 @@ const App = () => {
         <header>
           <MyNav subtitle=" A World of Stories Awaits!" />
         </header>
+        
         <MyAlert/>
         <AllTheBooks />
-        <MyFooter />
+        <MyFooter/>
       </div>
     </div>
   );

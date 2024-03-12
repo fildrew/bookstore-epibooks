@@ -75,7 +75,7 @@ class AllTheBooks extends Component {
                 <>
                 <Form.Control
                     className="border border-1 border-info"
-                    placeholder="Inserisci qui il titolo del libro che stai cercando..."
+                    placeholder="Search by Title , Author or Genre..."
                     onChange={(event) => {
                     this.setState({
                         books: this.state.library[this.state.selectedCat].filter((book) =>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Form } from "react-bootstrap";
+import { Row,  Form } from "react-bootstrap";
 
 class MyInputSearch extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class MyInputSearch extends React.Component {
     return (
       <Row className="justify-content-center mb-2">
         <Form.Control
-          placeholder="Search by Title, Author, Genre ..."
+          placeholder="Search by Title , Author or Genre..."
           onChange={this.handleSearch}
         />
       </Row>
