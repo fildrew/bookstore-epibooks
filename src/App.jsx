@@ -4,7 +4,7 @@ import MyNav from './components/MyNav'
 import MyFooter from './components/MyFooter'
 import MyAlert from "./components/MyAlert"; 
 import AllTheBooks from './components/AllTheBooks'
-
+import Welcome from './components/Welcome'
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
         <header>
           <MyNav subtitle=" A World of Stories Awaits!" />
         </header>
-        
+        <Welcome/> 
         <MyAlert/>
         <AllTheBooks />
         <MyFooter/>

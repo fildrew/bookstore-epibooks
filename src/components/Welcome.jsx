@@ -4,7 +4,7 @@ import Alert from "react-bootstrap/Alert";
 
 const Welcome = () => {
   return (
-    <div>
+    <div className='bg-info'>
         <h1 className= "text-center">Welcome to Copperfield & Twist!</h1>
         <h2>Unlock Your Imagination,</h2>
         <h2>One Page at a Time.</h2>
