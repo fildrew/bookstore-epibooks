@@ -25,8 +25,8 @@ class MySingleBook extends Component {
                 <Card.Img 
                     variant="top" 
                     src={book.img} 
-                    className="mt-2"
-                    style={{ objectFit: "cover", height:"100%", width:"100%",}}/>
+                    className="mt-3"
+                    style={{ objectFit: "hidden", height:"100%", width:"100%",}}/>
                 <Card.Body>
                 <Card.Title style={{overflow:"hidden",textOverflow:"ellipsis"}}>
                     {book.title}

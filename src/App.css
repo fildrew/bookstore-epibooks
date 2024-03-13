@@ -5,3 +5,15 @@
 .greenCardBorder {
   border: 2px solid green;
 }
+
+.mt-3{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.3s;
+  animation: ease-in;
+}
+
+
+.mt-3:hover{
+  transform: scale(1.1);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
