@@ -3,8 +3,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import React from "react";
 
-const MyFooter = (props) => {
-    <footer className="bg-dark text-white position-sticky bottom-0 pt-2">
+const MyFooter = () => {
+    <footer className="bg-dark text-white position-sticky">
         <Container>
             <Row className="justify-content-center">
                 <Col>

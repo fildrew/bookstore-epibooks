@@ -3,15 +3,16 @@ import { Component } from "react";
 import Container from "react-bootstrap/esm/Container";
 import fantasyBooks from "../books/fantasy.json";
 import historyBooks from "../books/history.json";
+import horrorBooks from "../books/horror.json";
 import romanceBooks from "../books/romance.json";
 import scifiBooks from "../books/scifi.json";
 import Row from "react-bootstrap/esm/Row";
 import MyAlert from "./MyAlert";
 import MyBookList from "./MyBookList";
-import Form from "react-bootstrap/Form";
-/* import Col from "react-bootstrap/esm/Col";  */
+import Form from "react-bootstrap/Form"; 
 
-// -----------CLASSE COMPONET
+
+// -----------CLASSE COMPONENT
 class AllTheBooks extends Component {
   // ---------IL SUO STATE ALL'INTERNO
     state = {
@@ -19,6 +20,7 @@ class AllTheBooks extends Component {
         library: {
         fantasy: fantasyBooks,
         romance: romanceBooks,
+        horror: horrorBooks,
         scifi: scifiBooks,
         history: historyBooks,
         },
@@ -30,7 +32,7 @@ class AllTheBooks extends Component {
   // ---------RENDER
     render() {
         return (
-        <Container className=" mt-3">
+        <Container className=" mt-2">
             <div className="mb-3">
             <Button
                 className="me-2"
@@ -40,6 +42,15 @@ class AllTheBooks extends Component {
                 }}
             >
                 Fantasy
+            </Button>
+            <Button
+                className="me-2"
+                variant="danger"
+                onClick={() => {
+                this.setState({ selectedCat: "horror", books: horrorBooks });
+                }}
+                > 
+                Horror
             </Button>
             <Button
                 className="me-2"
@@ -89,7 +100,7 @@ class AllTheBooks extends Component {
                 </>
             ) : (
                 <Container>
-                <MyAlert color="danger" MyText="Premi un bottone per scegliere la categoria" />
+                <MyAlert color="primary" MyText="Choose a Genre" />
                 </Container>
             )}
             </Row>

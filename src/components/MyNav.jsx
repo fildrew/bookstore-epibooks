@@ -5,15 +5,22 @@ import Nav from "react-bootstrap/Nav";
 
 const MyNav = (props) => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="primary" data-bs-theme="primary">
-      <Container >
-          <Navbar.Brand href="#home">Copperfield & Twist -{props.subtitle}</Navbar.Brand>
+    <Navbar 
+      collapseOnSelect
+      expand="lg" 
+      className="bg-body-tertiary fixed-top"
+      bg="dark" 
+      data-bs-theme="dark"
+    >
+      <Container className="fs-5">
+          <Navbar.Brand href="#home">Copperfield & Twist 
+            -{props.subtitle}</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#">Home</Nav.Link>
-              <Nav.Link href="#admin">About</Nav.Link>
-              <Nav.Link href="#contacts">Browse</Nav.Link>
+            <Nav className="ms-auto">
+                <Nav.Link href={props.homeLink} target='blank'>Home</Nav.Link>
+                <Nav.Link href={props.aboutLink} target='blank'>About</Nav.Link>
+                <Nav.Link href={props.browseLink} target='blank'>Browse</Nav.Link>
             </Nav>
           </Navbar.Collapse>
       </Container>

@@ -6,6 +6,6 @@ const MyAlert = (props) => {
                 {props.MyText}
             </Alert>
     );
-}
+} 
 
-export default MyAlert;
+export default MyAlert
