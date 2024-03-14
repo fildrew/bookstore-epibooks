@@ -12,7 +12,7 @@ const MyNav = (props) => {
       bg="dark" 
       data-bs-theme="dark"
     >
-      <Container className="fs-5">
+      <Container className="fs-4">
           <Navbar.Brand href="#home">Copperfield & Twist 
             -{props.subtitle}</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

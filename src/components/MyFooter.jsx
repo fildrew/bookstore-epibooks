@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import React from "react";
 
 const MyFooter = () => {
     <footer className="bg-dark text-white position-sticky">

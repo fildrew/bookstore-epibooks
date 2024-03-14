@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge"; 
+import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import CommentArea from "./CommentArea";
 
 
 class MySingleBook extends Component {
@@ -11,35 +13,36 @@ class MySingleBook extends Component {
 
     render() {
         const { book } = this.props;
-        const cardClassName = ` mt-3 me-3 ms-5 mb-4 ${this.state.selected ? "greenCardBorder" : ""}`;
-
         return (
-        
-            <Card 
-                style={{ cursor: "pointer",width: "20%",textOverflow:"ellipsis"}} 
-                className={cardClassName}
-                onClick={() => {
-                this.state.selected ? this.setState({ selected: false }) : this.setState({ selected: true });
-                }}
-            >
-                <Card.Img 
-                    variant="top" 
-                    src={book.img} 
-                    className="mt-3"
-                    style={{ objectFit: "hidden", height:"100%", width:"100%",}}/>
-                <Card.Body>
-                <Card.Title style={{overflow:"hidden",textOverflow:"ellipsis"}}>
-                    {book.title}
-                </Card.Title>
-                <Card.Text>
-                    <Badge bg="danger" className="me-2">
-                    € {book.price}
-                    </Badge>
-                    <Badge bg="info" className="me-2">{book.category}</Badge> 
-                    <Button variant="dark" size="sm" className="p-1">Buy Now</Button> 
-                </Card.Text>
-                </Card.Body>
-            </Card>
+            <Col xs={12} sm={6} md={4} xl={3} className="g-4" key={this.props.book.asin}>
+                <Card 
+                    className="h-100"
+                    style={{ cursor: "pointer",textOverflow:"ellipsis"}}
+                    >
+                    <Card.Img
+                        className="object-fit-contain img-fluid h-90"
+                        variant="top"
+                        src={this.props.book.img}
+                        onClick={() => this.setState({ selected: !this.state.selected })}
+                        style={{ border: this.state.selected ? "3px solid red" : "none" }}
+                    />
+                    <Card.Body>
+                        <Card.Title className="text-truncate">{this.props.book.title}</Card.Title>
+                        <Card.Text>
+                            <Badge bg="danger" className="me-2">
+                                <span>€{book.price}</span>
+                            </Badge>
+                            <Badge bg="info" className="me-2">
+                                <span>€{book.category}</span>
+                            </Badge>
+                        </Card.Text>
+                        <Button variant="dark" size="sm" className="p-1">
+                            Buy Now
+                        </Button>
+                        {this.state.selected && <CommentArea bookId={this.props.book.asin} />}
+                    </Card.Body>    
+                </Card>
+            </Col>
         );
     }
 }

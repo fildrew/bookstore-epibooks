@@ -35,7 +35,7 @@ class AllTheBooks extends Component {
         <Container className=" mt-2">
             <div className="mb-3">
             <Button
-                className="me-2"
+                className="me-2 fantasy"
                 variant="info"
                 onClick={() => {
                 this.setState({ selectedCat: "fantasy", books: fantasyBooks });
@@ -100,7 +100,9 @@ class AllTheBooks extends Component {
                 </>
             ) : (
                 <Container>
-                <MyAlert color="primary" MyText="Choose a Genre" />
+                <MyAlert 
+                    color="primary"
+                    MyText="Choose a Genre" />
                 </Container>
             )}
             </Row>
