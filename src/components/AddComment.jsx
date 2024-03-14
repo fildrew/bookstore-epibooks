@@ -1,69 +1,96 @@
 import { Component } from "react";
 import { Button, Form } from "react-bootstrap";
-const URL = "https://striveschool-api.herokuapp.com/api/comments/";
 
-
-const initialComment = {
-    
-        comment: "",
-        rate: "",
-        elementId: "",
-}
 
 class AddComment extends Component {
+
     state = {
-        comments: initialComment,
+        comment : {
+            comment:'',
+            rate:'',
+            elementId: this.props.asin,
+        },
     }
+
     handleSubmit = async(event) => {
         event.preventDefault();
-
-        fetch('https://striveschool-api.herokuapp.com/api/comments/', {
-            method: 'POST',
-            body: JSON.stringify(this.state.comments),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        
-        .then((res) => {
-            console.log('RES', res)
-            if (res.ok) {
-                window.alert('Thanks For Your Comment!')
+        try {
+            let response = await fetch (
+                'https://striveschool-api.herokuapp.com/api/comments/',
+                {
+                    method: 'POST',
+                    body: JSON.stringify(this.state.comment),
+                    headers: {
+                        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYyZmVkNDcxYWZhZjAwMTkxNTY2YmQiLCJpYXQiOjE3MTA0MjM3NjQsImV4cCI6MTcxMTYzMzM2NH0.wYrOn4UGijs2Kkm38CDuJv0OKDMJlGhajgtycOknyOk",
+                        'Content-Type': 'application/json',
+                    },
+                }
+            )
+            if(response.ok) {
+                alert('Review Complete!')
                 this.setState({
-                    comments: initialComment, // riassegno reservation al valore iniziale
+                    comment: {
+                        comment:'',
+                        rate:'',
+                        elementId: this.props.asin,
+                    },
                 })
             } else {
-                window.alert('Sorry,Try Again!')
-                throw new Error('Errore nel salvataggio della prenotazione')
+                throw new Error('Invalid response')
             }
-        })
-        .catch((err) => {
-            console.log('ERROR!', err)
-        })
-    };
-
+        }  catch (error) {
+            alert(error)
+        }
+    }   
+    
     render() {
         return (
-            <Form onSubmit={this.handleSubmit}>
-                    <Form.Select aria-label="Add Comment">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    
-                    </Form.Select>
-                    <Form.Group className="mb-3" controlId="comment">
-                        <Form.Label>Add Comment</Form.Label>
-                        <Form.Control as={"textarea"} rows={3} />
+            <div className="my-3">
+                <Form onSubmit={this.sendComment}>
+                    <Form.Group className="mb-2">
+                        <Form.Label>Review</Form.Label>
+                        <Form.Control
+                        type="text"
+                        rows={3}
+                        placeholder="Enter Comment"
+                        value={this.state.comment.comment}
+                        onChange={(e) =>
+                            this.setState({
+                            comment: {
+                                ...this.state.comment,
+                                comment: e.target.value,
+                            },
+                            })
+                        }
+                        />
                     </Form.Group>
-                    <Button variant="primary"
-                        type="submit" onClick={this.handleSubmit}>
+                    <Form.Group className="mb-2">
+                        <Form.Label>Rating</Form.Label>
+                        <Form.Control
+                        as="select"
+                        value={this.state.comment.rate}
+                        onChange={(e) =>
+                            this.setState({
+                            comment: {
+                                ...this.state.comment,
+                                rate: e.target.value,
+                            },
+                            })
+                        }
+                        >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
                         Submit
                     </Button>
-
-            </Form>
-        );
+                </Form>
+            </div>
+        )
     }
 }
 
